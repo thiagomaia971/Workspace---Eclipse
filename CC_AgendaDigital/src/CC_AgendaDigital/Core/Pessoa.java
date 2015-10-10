@@ -1,33 +1,43 @@
-package CC_AgendaDigital_Core;
+package CC_AgendaDigital.Core;
 
 import java.util.ArrayList;
 
-public class People {
+public class Pessoa extends Familia {
+
 	private String Nome;
 	private int Idade;
 	private String DataNascimento;
 	private ArrayList<Compromisso> Compromissos;
 
-	public People() {
+	public Pessoa() {
 		this.Nome = "";
 		this.Idade = 0;
 		this.DataNascimento = "xx/xx/xxxx";
 		Compromissos = new ArrayList<Compromisso>();
 	}
-	
-	public People(String Nome){
+
+	public Pessoa(String Nome) {
 		this.Nome = Nome;
+		this.Idade = 0;
+		this.DataNascimento = "xx/xx/xxxx";
 		Compromissos = new ArrayList<Compromisso>();
 	}
 
-	public People(String Nome, int Idade, String DataNascimento) {
+	public Pessoa(String Nome, int Idade, String DataNascimento) {
 		this.Nome = Nome;
-		this.Idade = Idade;
+		do {
+			if (Idade < 6) {
+				System.out.println("Idade muito baixo");
+			} else {
+				this.Idade = Idade;
+			}
+		} while (Idade < 6);
+		
 		this.DataNascimento = DataNascimento;
 		Compromissos = new ArrayList<Compromisso>();
 	}
 
-	public boolean AdicionarCompromisso(Compromisso compromisso) {
+	public boolean adicionarCompromisso(Compromisso compromisso) {
 		boolean addCompBool = false;
 		Compromissos.add(compromisso);
 		if (Compromissos.contains(compromisso)) {
@@ -36,7 +46,9 @@ public class People {
 		return addCompBool;
 	}
 	
-	public ArrayList<Compromisso> ReturnCompromisso(){
+	
+
+	public ArrayList<Compromisso> getCompromisso() {
 		return Compromissos;
 	}
 
@@ -44,9 +56,9 @@ public class People {
 		return Nome;
 	}
 
-	public void setNome(String nome) {
-		if (nome != null) {
-			Nome = nome;
+	public void setNome(String Nome) {
+		if (Nome != null || Nome != "") {
+			this.Nome = Nome;
 		}
 	}
 
@@ -55,7 +67,7 @@ public class People {
 	}
 
 	public void setIdade(int idade) {
-		if (idade > 1) {
+		if (idade > 5) {
 			Idade = idade;
 		}
 	}

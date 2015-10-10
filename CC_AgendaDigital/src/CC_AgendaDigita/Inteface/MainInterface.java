@@ -1,4 +1,4 @@
-package CC_AgendaDigital_Inteface;
+package CC_AgendaDigita.Inteface;
 
 import java.awt.BorderLayout;
 
