@@ -5,18 +5,27 @@ import java.util.ArrayList;
 public class Compromisso {
 	private String NomeCompromisso;
 	private ArrayList<Integer> Dias;
-	private String horaInicial;
-	private String horaFinal;
+	private int[] horaInicial;
+	private int[] horaFinal;
 
-	public Compromisso(String NomeCompromisso, String horaInicial,
-			String horaFinal, int... dias) {
+	public Compromisso(String NomeCompromisso, int[] horaInicial,
+			int[] horaFinal, int... dias) {
+		
 		this.NomeCompromisso = NomeCompromisso;
-		this.horaInicial = horaInicial;
-		this.horaFinal = horaFinal;
+		this.horaInicial = new int[2];
+		this.horaFinal = new int[2];
+		
+		if(horaInicial[0] >= 0 || horaInicial[0] <= 23 && horaInicial[1] >= 0 || horaInicial[1] <= 59){
+			this.horaInicial = horaInicial;
+		}
+		if(horaFinal[0] >= 0 || horaFinal[0] <= 23 && horaFinal[1] >= 0 || horaFinal[1] <= 59){
+			this.horaFinal = horaFinal;
+		}
+		
+		Dias = new ArrayList<Integer>();
 		for (int i : dias) {
 			Dias.add(i);
 		}
-		Dias = new ArrayList<Integer>();
 	}
 
 	public String getNomeCompromisso() {
@@ -35,19 +44,19 @@ public class Compromisso {
 		}
 	}
 
-	public void alterarHoraInicial(String horaInicial) {
+	public void alterarHoraInicial(int[] horaInicial) {
 		this.horaInicial = horaInicial;
 	}
 
-	public void alterarHoraFinal(String horaFinal) {
+	public void alterarHoraFinal(int[] horaFinal) {
 		this.horaFinal = horaFinal;
 	}
 
-	public String getHoraInicial() {
+	public int[] getHoraInicial() {
 		return horaInicial;
 	}
 
-	public String getHoraFinal() {
+	public int[] getHoraFinal() {
 		return horaFinal;
 	}
 
