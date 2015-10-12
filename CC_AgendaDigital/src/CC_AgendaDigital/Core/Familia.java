@@ -52,5 +52,10 @@ public class Familia {
 		}
 		return false;
 	}
+	
+	public String toString(){
+		
+		return NomeDaFamilia;
+	}
 
 }
