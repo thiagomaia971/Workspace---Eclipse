@@ -6,14 +6,14 @@ import java.sql.SQLException;
 
 public class DAO {
 	private static String URL = "jdbc:sqlserver://localhost;databaseName=AgendaDigital;";
-	private static String usuario = "sa";
+	private static String user = "sa";
 	private static String password = "Asd143678925";
-	private static String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	
-	public static Connection openConnection() throws SQLException{
+
+	public static Connection openConnection() throws SQLException {
 		try {
-			Class.forName(DRIVER);
-			Connection con = DriverManager.getConnection(URL, usuario, password);
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			Connection con = DriverManager.getConnection(URL, user, password);
+			System.out.println("Conexão feita com sucesso!");
 			return con;
 		} catch (ClassNotFoundException e) {
 			throw new SQLException(e.getMessage());
