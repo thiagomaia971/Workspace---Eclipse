@@ -29,6 +29,8 @@ public class MainProgram {
 	public static void main(String[] args) throws SQLException {
 		db = new DAO();
 		db.openConnection();
+		db.receberTodasFamilias();
+		db.closeConnection();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
