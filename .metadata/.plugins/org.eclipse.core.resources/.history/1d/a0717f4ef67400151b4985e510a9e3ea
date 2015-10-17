@@ -1,0 +1,69 @@
+package CC_AgendaDigital.Core;
+
+import java.util.ArrayList;
+
+public class Familia {
+	
+	private final int FamiliaId;
+	private String NomeDaFamilia;
+	private ArrayList<Pessoa> ListaDePessoas;
+	private int quantidadeDePessoas;
+
+	public Familia(String NameOfFamily) {
+		FamiliaId = 0;
+		this.NomeDaFamilia = NameOfFamily;
+		ListaDePessoas = new ArrayList<Pessoa>();
+		quantidadeDePessoas = 0;
+	}
+	
+	public Familia(int FamiliaId, String NameOfFamily) {
+		this.FamiliaId = FamiliaId;
+		this.NomeDaFamilia = NameOfFamily;
+		ListaDePessoas = new ArrayList<Pessoa>();
+		quantidadeDePessoas = 0;
+	}
+
+	public boolean registrarPessoa(Pessoa pessoa) {
+		ListaDePessoas.add(pessoa);
+		if (ListaDePessoas.contains(pessoa)) {
+			quantidadeDePessoas++;
+			return true;
+		}
+		return false;
+	}
+	
+	public int getQuantidadeDePessoas(){
+		return quantidadeDePessoas;
+	}
+
+	public ArrayList<Pessoa> retornarListaDePessoas() {
+		return ListaDePessoas;
+	}
+
+	public String getNomeDaFamilia() {
+		return NomeDaFamilia;
+	}
+
+	public void setNomeDaFamilia(String NomeDaFamilia) {
+		if (NomeDaFamilia != null) {
+			this.NomeDaFamilia = NomeDaFamilia;
+		}
+	}
+
+	public int getId(){
+		return FamiliaId;
+	}
+	
+	public boolean isEmpty() {
+		if(quantidadeDePessoas == 0){
+			return true;
+		}
+		return false;
+	}
+	
+	public String toString(){
+		
+		return FamiliaId + NomeDaFamilia;
+	}
+
+}
