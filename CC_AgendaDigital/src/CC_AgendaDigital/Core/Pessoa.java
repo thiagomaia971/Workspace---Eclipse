@@ -2,37 +2,29 @@ package CC_AgendaDigital.Core;
 
 import java.util.ArrayList;
 
-public class Pessoa extends Familia {
+public class Pessoa{
 
+	private final int PessoaId;
+	private final int FamiliaId;
 	private String Nome;
 	private int Idade;
 	private String DataNascimento;
 	private ArrayList<Compromisso> Compromissos;
 
-	public Pessoa() {
-		this.Nome = "";
-		this.Idade = 0;
-		this.DataNascimento = "xx/xx/xxxx";
-		Compromissos = new ArrayList<Compromisso>();
-	}
-
-	public Pessoa(String Nome) {
-		this.Nome = Nome;
-		this.Idade = 0;
-		this.DataNascimento = "xx/xx/xxxx";
-		Compromissos = new ArrayList<Compromisso>();
-	}
-
 	public Pessoa(String Nome, String DataNascimento, int Idade) {
+		this.PessoaId = 0;
+		this.FamiliaId = 0;
 		this.Nome = Nome;
-		do {
-			if (Idade < 6) {
-				System.out.println("Idade muito baixo");
-			} else {
-				this.Idade = Idade;
-			}
-		} while (Idade < 6);
-		
+		this.Idade = Idade;
+		this.DataNascimento = DataNascimento;
+		Compromissos = new ArrayList<Compromisso>();
+	}
+
+	public Pessoa(int PessoaId, int FamiliaId, String Nome, String DataNascimento, int Idade) {
+		this.PessoaId = PessoaId;
+		this.FamiliaId = FamiliaId;
+		this.Nome = Nome;
+		this.Idade = Idade;
 		this.DataNascimento = DataNascimento;
 		Compromissos = new ArrayList<Compromisso>();
 	}
@@ -45,8 +37,6 @@ public class Pessoa extends Familia {
 		}
 		return addCompBool;
 	}
-	
-	
 
 	public ArrayList<Compromisso> getCompromisso() {
 		return Compromissos;
@@ -66,6 +56,11 @@ public class Pessoa extends Familia {
 		return Idade;
 	}
 
+	public int getId() {
+		return PessoaId;
+	}
+
+
 	public void setIdade(int idade) {
 		if (idade > 5) {
 			Idade = idade;
@@ -81,9 +76,9 @@ public class Pessoa extends Familia {
 			DataNascimento = dataNascimento;
 		}
 	}
-	
-public String toString(){
-		
+
+	public String toString() {
+
 		return Nome;
 	}
 }

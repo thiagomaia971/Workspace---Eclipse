@@ -23,13 +23,9 @@ public class MainProgram {
 	private JFrame frame;
 	private static SQLite db;
 
-	public MainProgram() {
-		initialize();
-		criarListFamilia();
-	}
-	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		db = new SQLite("Database/AgendaDigitalDb.sqlite");
+		// db.insertFamilia(new Familia("Test"));
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -41,8 +37,12 @@ public class MainProgram {
 			}
 		});
 	}
-	
-	
+
+	public MainProgram() {
+		initialize();
+		criarListFamilia();
+	}
+
 	private void initialize() {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension scrnsize = toolkit.getScreenSize();
@@ -57,20 +57,20 @@ public class MainProgram {
 	}
 
 	private void criarListFamilia() {
-		DefaultListModel<Familia> model = new DefaultListModel<Familia>();
+		JLabel lblNewLabel = new JLabel("Familias");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 0, 195, 38);
+		frame.getContentPane().add(lblNewLabel);
+
 		ArrayList<Familia> familias = db.getFamilias();
-		JList JListFamilias = new JList(model);
+		DefaultListModel<Familia> model = new DefaultListModel<Familia>();
+		JList<Familia> JListFamilias = new JList<Familia>(model);
 		JListFamilias.setBounds(0, 41, 195, 648);
 
 		for (int i = 0; i < familias.size(); i++) {
 			model.addElement(familias.get(i));
 		}
 		frame.getContentPane().add(JListFamilias);
-
-		JLabel lblNewLabel = new JLabel("Fam\u00EDlias");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0, 0, 195, 38);
-		frame.getContentPane().add(lblNewLabel);
 	}
 }

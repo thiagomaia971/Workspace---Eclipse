@@ -3,17 +3,21 @@ package CC_AgendaDigital.Core;
 import java.util.ArrayList;
 
 public class Familia {
+	
+	private final int FamiliaId;
 	private String NomeDaFamilia;
 	private ArrayList<Pessoa> ListaDePessoas;
 	private int quantidadeDePessoas;
 
-	public Familia() {
-		NomeDaFamilia = "";
+	public Familia(String NameOfFamily) {
+		FamiliaId = 0;
+		this.NomeDaFamilia = NameOfFamily;
 		ListaDePessoas = new ArrayList<Pessoa>();
 		quantidadeDePessoas = 0;
 	}
-
-	public Familia(String NameOfFamily) {
+	
+	public Familia(int FamiliaId, String NameOfFamily) {
+		this.FamiliaId = FamiliaId;
 		this.NomeDaFamilia = NameOfFamily;
 		ListaDePessoas = new ArrayList<Pessoa>();
 		quantidadeDePessoas = 0;
@@ -46,6 +50,10 @@ public class Familia {
 		}
 	}
 
+	public int getId(){
+		return FamiliaId;
+	}
+	
 	public boolean isEmpty() {
 		if(quantidadeDePessoas == 0){
 			return true;
@@ -54,8 +62,7 @@ public class Familia {
 	}
 	
 	public String toString(){
-		
-		return NomeDaFamilia;
+		return "•" + FamiliaId + ".  " + NomeDaFamilia;
 	}
 
 }

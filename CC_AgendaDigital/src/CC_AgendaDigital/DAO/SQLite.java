@@ -67,7 +67,7 @@ public class SQLite {
 		try {
 			rs = this.stm.executeQuery("SELECT * FROM Familia");
 			while(rs.next()){
-				auxPessoas.add(new Familia(rs.getString("Nome")));
+				auxPessoas.add(new Familia(rs.getInt("FamiliaId"), rs.getString("Nome")));
 			}
 			rs.close();
 			
