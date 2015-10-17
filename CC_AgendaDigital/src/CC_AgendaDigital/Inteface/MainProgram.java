@@ -9,29 +9,27 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 
 import CC_AgendaDigital.Core.Familia;
-import CC_AgendaDigital.DAO.DAO;
+import CC_AgendaDigital.DAO.SQLite;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import java.awt.Font;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MainProgram {
 
 	private JFrame frame;
-	private static DAO db;
+	private static SQLite db;
 
-	/**
-	 * Launch the application.
-	 * @throws SQLException 
-	 */
-	public static void main(String[] args) throws SQLException {
-		db = new DAO();
-		db.openConnection();
-		db.receberTodasFamilias();
-		db.closeConnection();
-		
+	public MainProgram() {
+		initialize();
+		criarListFamilia();
+	}
+	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		db = new SQLite("Database/AgendaDigitalDb.sqlite");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,22 +41,12 @@ public class MainProgram {
 			}
 		});
 	}
-
-	/**
-	 * Create the application.
-	 */
-	public MainProgram() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
+	
 	private void initialize() {
-		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension scrnsize = toolkit.getScreenSize();
-		
+
 		frame = new JFrame("AgendaDigital");
 		frame.setBounds(200, 200, scrnsize.width - 20, scrnsize.height - 40);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,15 +54,19 @@ public class MainProgram {
 		frame.setLocationRelativeTo(null);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.getContentPane().setLayout(null);
-		
+	}
+
+	private void criarListFamilia() {
 		DefaultListModel<Familia> model = new DefaultListModel<Familia>();
+		ArrayList<Familia> familias = db.getFamilias();
 		JList JListFamilias = new JList(model);
 		JListFamilias.setBounds(0, 41, 195, 648);
-		model.addElement(new Familia("Maias"));
-		model.addElement(new Familia("Freitas"));
-		model.addElement(new Familia("Florencio"));
+
+		for (int i = 0; i < familias.size(); i++) {
+			model.addElement(familias.get(i));
+		}
 		frame.getContentPane().add(JListFamilias);
-		
+
 		JLabel lblNewLabel = new JLabel("Fam\u00EDlias");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

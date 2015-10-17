@@ -23,7 +23,7 @@ public class Pessoa extends Familia {
 		Compromissos = new ArrayList<Compromisso>();
 	}
 
-	public Pessoa(String Nome, int Idade, String DataNascimento) {
+	public Pessoa(String Nome, String DataNascimento, int Idade) {
 		this.Nome = Nome;
 		do {
 			if (Idade < 6) {
@@ -80,5 +80,10 @@ public class Pessoa extends Familia {
 		if (dataNascimento != null) {
 			DataNascimento = dataNascimento;
 		}
+	}
+	
+public String toString(){
+		
+		return Nome;
 	}
 }
