@@ -25,7 +25,7 @@ public class MainProgram {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		db = new SQLite("Database/AgendaDigitalDb.sqlite");
-		// db.insertFamilia(new Familia("Test"));
+		 db.insertFamilia(new Familia("Maia"));
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
