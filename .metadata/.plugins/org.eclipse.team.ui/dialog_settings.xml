@@ -2,4 +2,6 @@
 <section name="Workbench">
 	<section name="SynchronizeViewSettings">
 	</section>
+	<section name="SynchronizeWizard">
+	</section>
 </section>

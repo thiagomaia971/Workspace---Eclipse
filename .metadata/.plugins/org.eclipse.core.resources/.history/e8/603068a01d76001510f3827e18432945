@@ -1,9 +1,0 @@
-package CC_AgendaDigital.Inteface;
-
-import javax.swing.JFrame;
-
-public class ButtonController {
-	public static void newPessoa(JFrame frame){
-		
-	}
-}
