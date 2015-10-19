@@ -76,6 +76,6 @@ public class Pessoa{
 
 	public String toString() {
 
-		return Nome;
+		return "•" + (PessoaId + 1)+ ".  " + Nome;
 	}
 }

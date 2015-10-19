@@ -1,0 +1,101 @@
+package CC_AgendaDigital.Inteface;
+
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.SwingConstants;
+
+import CC_AgendaDigital.Core.Pessoa;
+import CC_AgendaDigital.DAO.SQLite;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+
+public class Interface {
+
+	private JFrame frame;
+	private static SQLite db;
+	ArrayList<Pessoa> ListaPessoas;
+	JLabel lblNewLabel;
+	JList<Pessoa> JListPessoas;
+	JPanel panelNewPessoa;
+
+	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		db = new SQLite("Database/AgendaDigitalDb.sqlite");
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Interface window = new Interface();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Interface() {
+		initialize();
+		createOrUpdateListPessoas();
+		panelNewPessoa = ButtonController.newPessoa();
+		
+	}
+	private void initialize() {
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Dimension scrnsize = toolkit.getScreenSize();
+
+		frame = new JFrame("AgendaDigital");
+		frame.setBounds(200, 200, scrnsize.width - 20, scrnsize.height - 40);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.getContentPane().setLayout(null);
+	}
+
+	private void createOrUpdateListPessoas() {
+		lblNewLabel = new JLabel("Pessoas");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 0, 195, 38);
+		frame.getContentPane().add(lblNewLabel);
+
+		ListaPessoas = db.getPessoas();
+		DefaultListModel<Pessoa> model = new DefaultListModel<Pessoa>();
+		JListPessoas = new JList<Pessoa>(model);
+		JListPessoas.setBounds(10, 41, 185, 587);
+
+		for (int i = 0; i < ListaPessoas.size(); i++) {
+			model.addElement(ListaPessoas.get(i));
+		}
+		frame.getContentPane().add(JListPessoas);
+		
+		JButton btnNovaPessoa = new JButton("Nova");
+		btnNovaPessoa.setBounds(10, 639, 185, 39);
+		frame.getContentPane().add(btnNovaPessoa);
+		
+		btnNovaPessoa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.getContentPane().add(panelNewPessoa);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
+		
+	}
+}

@@ -1687,3 +1687,15 @@ java.io.IOException: O processo não pode acessar o arquivo porque outro process
 	at org.eclipse.jgit.api.AddCommand.call(AddCommand.java:187)
 	at org.eclipse.egit.ui.internal.staging.StagingView$42.run(StagingView.java:2123)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.ui 4 0 2015-10-19 03:55:29.169
+!MESSAGE O processo não pode acessar o arquivo porque outro processo bloqueou parte do arquivo
+!STACK 0
+java.io.IOException: O processo não pode acessar o arquivo porque outro processo bloqueou parte do arquivo
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(Unknown Source)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:302)
+	at org.eclipse.jgit.internal.storage.file.ObjectDirectoryInserter.insert(ObjectDirectoryInserter.java:103)
+	at org.eclipse.jgit.api.AddCommand.call(AddCommand.java:187)
+	at org.eclipse.egit.ui.internal.staging.StagingView$42.run(StagingView.java:2123)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

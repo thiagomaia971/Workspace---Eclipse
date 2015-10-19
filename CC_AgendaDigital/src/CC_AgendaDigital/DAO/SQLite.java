@@ -10,23 +10,23 @@ import java.util.ArrayList;
 import CC_AgendaDigital.Core.Pessoa;
 
 public class SQLite {
-	private Connection conn;
-	private Statement stm;
+	private static Connection conn;
+	private static Statement stm;
 
 	public SQLite(String arquivo) throws ClassNotFoundException, SQLException {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			this.conn = DriverManager.getConnection("jdbc:sqlite:" + arquivo);
-			this.stm = this.conn.createStatement();
+			conn = DriverManager.getConnection("jdbc:sqlite:" + arquivo);
+			stm = conn.createStatement();
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
 
-	public void insertPessoa(Pessoa pessoa) {
+	public static void insertPessoa(Pessoa pessoa) {
 		try {
-			this.stm = this.conn.createStatement();
-			this.stm.executeUpdate("INSERT INTO Pessoa(Nome, DataNasc, Idade) " + "VALUES ('"
+			stm = conn.createStatement();
+			stm.executeUpdate("INSERT INTO Pessoa(Nome, DataNasc, Idade) " + "VALUES ('"
 					+ pessoa.getNome() + "', '" + pessoa.getDataNascimento()
 					+ "', " + pessoa.getIdade() + ")");
 		} catch (Exception e) {
@@ -34,11 +34,11 @@ public class SQLite {
 		}
 	}
 	
-	public ArrayList<Pessoa> getPessoas(){
+	public static ArrayList<Pessoa> getPessoas(){
 		ArrayList<Pessoa> auxPessoas = new ArrayList<Pessoa>();
 		ResultSet rs;
 		try {
-			rs = this.stm.executeQuery("SELECT * FROM Pessoa");
+			rs = stm.executeQuery("SELECT * FROM Pessoa");
 			while(rs.next()){
 				auxPessoas.add(new Pessoa(rs.getString("Nome"), rs.getString("DataNasc"), rs.getInt("Idade")));
 			}

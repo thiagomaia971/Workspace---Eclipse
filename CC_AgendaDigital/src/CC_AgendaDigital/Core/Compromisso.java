@@ -3,14 +3,19 @@ package CC_AgendaDigital.Core;
 import java.util.ArrayList;
 
 public class Compromisso {
+	
+	private final int Id;
+	private final int PessoaId;
 	private String NomeCompromisso;
 	private ArrayList<Integer> Dias;
 	private int[] horaInicial;
 	private int[] horaFinal;
 
-	public Compromisso(String NomeCompromisso, int[] horaInicial,
+	public Compromisso(int Id, int PessoaId, String NomeCompromisso, int[] horaInicial,
 			int[] horaFinal, int... dias) {
 		
+		this.Id = Id;
+		this.PessoaId = PessoaId;
 		this.NomeCompromisso = NomeCompromisso;
 		this.horaInicial = new int[2];
 		this.horaFinal = new int[2];
@@ -38,6 +43,14 @@ public class Compromisso {
 		}
 	}
 
+	public int getId(){
+		return Id;
+	}
+	
+	public int getPessoaId(){
+		return PessoaId;
+	}
+	
 	public void alterarDias(int... dias) {
 		for (int i : dias) {
 			Dias.add(i);
