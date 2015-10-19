@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -14,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.SwingConstants;
 
+import CC_AgendaDigital.Core.IButtonController;
 import CC_AgendaDigital.Core.Pessoa;
 import CC_AgendaDigital.DAO.SQLite;
 import javax.swing.JButton;
@@ -27,18 +27,26 @@ import javax.swing.JTextField;
 public class Interface implements IButtonController {
 
 	private JFrame frame;
-	ArrayList<Pessoa> ListaPessoas;
-	JLabel lblNewLabel;
-	JList<Pessoa> JListPessoas;
-	JPanel panelNewPessoa;
-	DefaultListModel<Pessoa> model;
+	private ArrayList<Pessoa> ListaPessoas;
+	private JLabel lblPessoas;
+	private JList<Pessoa> JListPessoas;
+	private DefaultListModel<Pessoa> model;
+	private JPanel panelNovaPessoa;
+	private JPanel panelPessoa;
 	static String s;
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
+	public static void main(String[] args) {
 
-		s = new File("").getCanonicalPath();
-		new SQLite(s + "\\AgendaDigitalDb.sqlite");
+		try {
+			s = new File("").getCanonicalPath();
+			new SQLite(s + "\\AgendaDigitalDb.sqlite");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
+
 			public void run() {
 				try {
 					Interface window = new Interface();
@@ -47,18 +55,19 @@ public class Interface implements IButtonController {
 					e.printStackTrace();
 				}
 			}
+
 		});
 
 	}
 
 	public Interface() throws IOException {
+		panelNovaPessoa = new JPanel();
+		panelPessoa = new JPanel();
 		initialize();
-
-		createOrUpdateListPessoas();
-		// panelNewPessoa = ButtonController.newPessoa();
+		criarJListaPessoas();
 	}
 
-	private void initialize() throws IOException {
+	private void initialize() {
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension scrnsize = toolkit.getScreenSize();
@@ -70,25 +79,31 @@ public class Interface implements IButtonController {
 		frame.setLocationRelativeTo(null);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
+		
 	}
 
-	private void createOrUpdateListPessoas() {
-		lblNewLabel = new JLabel("Pessoas");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0, 0, 195, 38);
-		frame.getContentPane().add(lblNewLabel);
+	private void criarJListaPessoas() {
+
+		lblPessoas = new JLabel("Pessoas");
+		lblPessoas.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPessoas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPessoas.setBounds(0, 0, 195, 38);
+
+		frame.getContentPane().add(lblPessoas);
 
 		ListaPessoas = SQLite.getPessoas();
 		model = new DefaultListModel<Pessoa>();
 		JListPessoas = new JList<Pessoa>(model);
 		JListPessoas.setBounds(10, 41, 185, 587);
-
+		
 		for (int i = 0; i < ListaPessoas.size(); i++) {
 			model.addElement(ListaPessoas.get(i));
 		}
-		frame.getContentPane().add(JListPessoas);
 
+		frame.getContentPane().add(JListPessoas);
+		JListPessoas.setSelectedIndex(0);
+		
 		JButton btnNovaPessoa = new JButton("Nova");
 		btnNovaPessoa.setBounds(10, 639, 185, 39);
 		frame.getContentPane().add(btnNovaPessoa);
@@ -96,94 +111,127 @@ public class Interface implements IButtonController {
 		btnNovaPessoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					newPessoa();
+					newPanelCreatePessoa();
+					frame.revalidate();
+					frame.repaint();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				frame.revalidate();
-				frame.repaint();
+
 			}
 		});
 
 	}
 
-	public void newPessoa() throws IOException {
-		JPanel panel = new JPanel();
-		panel.setToolTipText("");
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setForeground(Color.WHITE);
-		panel.setBounds(205, 0, 1166, 707);
-		panel.setLayout(null);
-		frame.getContentPane().add(panel);
+	public void newPanelCreatePessoa() throws IOException {
+		
+		panelPessoa.setVisible(false);
+		panelNovaPessoa.setVisible(true);
+		
+		panelNovaPessoa.setToolTipText("");
+		panelNovaPessoa.setBackground(Color.LIGHT_GRAY);
+		panelNovaPessoa.setForeground(Color.WHITE);
+		panelNovaPessoa.setBounds(205, 0, 1166, 707);
+		panelNovaPessoa.setLayout(null);
 
-		JLabel lblNewLabel_1 = new JLabel(s);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(10, 11, 1116, 39);
-		panel.add(lblNewLabel_1);
-		// JLabel lblNewLabel_1 = new JLabel("Cadastrar");
+		JLabel lblCadastrar = new JLabel("Cadastrar");
+		lblCadastrar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblCadastrar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrar.setBounds(10, 11, 1116, 39);
 
 		JLabel lblNome = new JLabel("Nome: ");
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNome.setBounds(371, 117, 147, 28);
-		panel.add(lblNome);
 
-		JTextField txtDigiteONome = new JTextField();
-		txtDigiteONome.setToolTipText("");
-		txtDigiteONome.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		txtDigiteONome.setForeground(Color.BLACK);
-		txtDigiteONome.setBounds(588, 125, 198, 20);
-		panel.add(txtDigiteONome);
-		txtDigiteONome.setColumns(10);
+		JTextField inputNome = new JTextField();
+		inputNome.setToolTipText("");
+		inputNome.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		inputNome.setForeground(Color.BLACK);
+		inputNome.setBounds(588, 125, 198, 20);
+		inputNome.setColumns(10);
 
 		JLabel lblIdade = new JLabel("Idade: ");
 		lblIdade.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblIdade.setBounds(371, 156, 147, 28);
-		panel.add(lblIdade);
 
-		JTextField txtDigiteAIdade = new JTextField();
-		txtDigiteAIdade.setForeground(Color.BLACK);
-		txtDigiteAIdade.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		txtDigiteAIdade.setColumns(10);
-		txtDigiteAIdade.setBounds(588, 164, 198, 20);
-		panel.add(txtDigiteAIdade);
+		JTextField inputIdade = new JTextField();
+		inputIdade.setForeground(Color.BLACK);
+		inputIdade.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		inputIdade.setColumns(10);
+		inputIdade.setBounds(588, 164, 198, 20);
 
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento: ");
 		lblDataDeNascimento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblDataDeNascimento.setBounds(371, 195, 147, 28);
-		panel.add(lblDataDeNascimento);
 
-		JTextField textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText("00/00/0000");
-		textField.setForeground(Color.BLACK);
-		textField.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		textField.setColumns(10);
-		textField.setBounds(588, 201, 198, 20);
-		panel.add(textField);
+		JTextField inputDataNascimento = new JTextField();
+		inputDataNascimento.setHorizontalAlignment(SwingConstants.CENTER);
+		inputDataNascimento.setText("00/00/0000");
+		inputDataNascimento.setForeground(Color.BLACK);
+		inputDataNascimento.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		inputDataNascimento.setColumns(10);
+		inputDataNascimento.setBounds(588, 201, 198, 20);
+
+		frame.getContentPane().add(panelNovaPessoa);
+		panelNovaPessoa.add(lblCadastrar);
+		panelNovaPessoa.add(lblNome);
+		panelNovaPessoa.add(inputNome);
+		panelNovaPessoa.add(lblIdade);
+		panelNovaPessoa.add(inputIdade);
+		panelNovaPessoa.add(lblDataDeNascimento);
+		panelNovaPessoa.add(inputDataNascimento);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBounds(958, 657, 198, 39);
+		panelNovaPessoa.add(btnCadastrar);
+		
 		btnCadastrar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				SQLite.insertPessoa(new Pessoa(txtDigiteONome.getText(), textField.getText(),
-						Integer.parseInt(txtDigiteAIdade.getText())));
-				ListaPessoas = SQLite.getPessoas();
-				// JListPessoas = new JList<Pessoa>(model);
-				/*
-				 * for (int i = 0; i < ListaPessoas.size(); i++) {
-				 * model.addElement(ListaPessoas.get(i)); }
-				 */
-				model.addElement(ListaPessoas.get(ListaPessoas.size() - 1));
-				frame.getContentPane().add(JListPessoas);
-				frame.revalidate();
-				frame.repaint();
+
+				SQLite.insertPessoa(new Pessoa(inputNome.getText(), inputDataNascimento.getText(),
+						Integer.parseInt(inputIdade.getText())));
+				updateJListPessoas();
+				JListPessoas.setSelectedIndex(ListaPessoas.size() - 1);
+				newPanelPessoaLogada();
 			}
 		});
-		btnCadastrar.setBounds(958, 657, 198, 39);
-		panel.add(btnCadastrar);
 	}
 
+	public void newPanelPessoaLogada(){
+		panelNovaPessoa.setVisible(false);
+		panelPessoa.setVisible(true);
+		
+		panelPessoa.setToolTipText("");
+		panelPessoa.setBackground(Color.LIGHT_GRAY);
+		panelPessoa.setForeground(Color.WHITE);
+		panelPessoa.setBounds(205, 0, 1166, 707);
+		panelPessoa.setLayout(null);
+		
+		
+		Pessoa pessoaSelecionada = JListPessoas.getSelectedValue();
+		
+		JLabel lblCadastrar = new JLabel(pessoaSelecionada.getNome());
+		lblCadastrar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblCadastrar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrar.setBounds(10, 11, 1116, 39);
+		
+		frame.getContentPane().add(panelPessoa);
+		panelPessoa.add(lblCadastrar);
+		
+		frame.revalidate();
+		frame.repaint();
+	}
+	
+	public void updateJListPessoas() {
+		ListaPessoas = SQLite.getPessoas();
+		model.addElement(ListaPessoas.get(ListaPessoas.size() - 1));
+		frame.revalidate();
+		frame.repaint();
+
+	}
+
+	
 }

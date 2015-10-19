@@ -2,24 +2,18 @@ package CC_AgendaDigital.Core;
 
 import java.util.ArrayList;
 
+import CC_AgendaDigital.DAO.SQLite;
+
 public class Pessoa{
 
-	private final int PessoaId;
+	private int PessoaId;
 	private String Nome;
 	private int Idade;
 	private String DataNascimento;
 	private ArrayList<Compromisso> Compromissos;
 
 	public Pessoa(String Nome, String DataNascimento, int Idade) {
-		this.PessoaId = 0;
-		this.Nome = Nome;
-		this.Idade = Idade;
-		this.DataNascimento = DataNascimento;
-		Compromissos = new ArrayList<Compromisso>();
-	}
-
-	public Pessoa(int PessoaId, int FamiliaId, String Nome, String DataNascimento, int Idade) {
-		this.PessoaId = PessoaId;
+		//this.PessoaId = (SQLite.pessoasId(this));
 		this.Nome = Nome;
 		this.Idade = Idade;
 		this.DataNascimento = DataNascimento;
@@ -39,6 +33,10 @@ public class Pessoa{
 		return Compromissos;
 	}
 
+	public int getQdeCompromissos(){
+		return Compromissos.size();
+	}
+	
 	public String getNome() {
 		return Nome;
 	}
@@ -52,11 +50,10 @@ public class Pessoa{
 	public int getIdade() {
 		return Idade;
 	}
-
-	public int getId() {
+	
+	public int getId(){
 		return PessoaId;
 	}
-
 
 	public void setIdade(int idade) {
 		if (idade > 5) {
@@ -75,7 +72,7 @@ public class Pessoa{
 	}
 
 	public String toString() {
-
-		return "•" + (PessoaId + 1)+ ".  " + Nome;
+		PessoaId = SQLite.pessoasId(this);
+		return "•" + (PessoaId)+ ".  " + Nome;
 	}
 }

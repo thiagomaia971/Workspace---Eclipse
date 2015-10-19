@@ -2,30 +2,25 @@ package CC_AgendaDigital.Core;
 
 import java.util.ArrayList;
 
+import CC_AgendaDigital.DAO.SQLite;
+
 public class Compromisso {
 	
-	private final int Id;
+	private final int CompromissoId;
 	private final int PessoaId;
 	private String NomeCompromisso;
 	private ArrayList<Integer> Dias;
-	private int[] horaInicial;
-	private int[] horaFinal;
+	private String horaInicial;
+	private String horaFinal;
 
-	public Compromisso(int Id, int PessoaId, String NomeCompromisso, int[] horaInicial,
-			int[] horaFinal, int... dias) {
+	public Compromisso(Pessoa Pessoa, String NomeCompromisso, String horaInicial,
+			String horaFinal, int... dias) {
 		
-		this.Id = Id;
-		this.PessoaId = PessoaId;
+		this.PessoaId = Pessoa.getId();
+		this.CompromissoId = SQLite.qtdeCompromissos();
 		this.NomeCompromisso = NomeCompromisso;
-		this.horaInicial = new int[2];
-		this.horaFinal = new int[2];
-		
-		if(horaInicial[0] >= 0 || horaInicial[0] <= 23 && horaInicial[1] >= 0 || horaInicial[1] <= 59){
-			this.horaInicial = horaInicial;
-		}
-		if(horaFinal[0] >= 0 || horaFinal[0] <= 23 && horaFinal[1] >= 0 || horaFinal[1] <= 59){
-			this.horaFinal = horaFinal;
-		}
+		this.horaInicial = horaInicial;
+		this.horaFinal = horaFinal;
 		
 		Dias = new ArrayList<Integer>();
 		for (int i : dias) {
@@ -43,12 +38,16 @@ public class Compromisso {
 		}
 	}
 
-	public int getId(){
-		return Id;
+	public int getCompromissoId(){
+		return CompromissoId;
 	}
 	
 	public int getPessoaId(){
 		return PessoaId;
+	}
+	
+	public ArrayList<Integer> getDias(){
+		return Dias;
 	}
 	
 	public void alterarDias(int... dias) {
@@ -57,7 +56,15 @@ public class Compromisso {
 		}
 	}
 
-	public void alterarHoraInicial(int[] horaInicial) {
+	public String getHoraInicial(){
+		return horaInicial;
+	}
+	
+	public String getHoraFinal(){
+		return horaFinal;
+	}
+	
+	/*public void alterarHoraInicial(int[] horaInicial) {
 		this.horaInicial = horaInicial;
 	}
 
@@ -71,6 +78,6 @@ public class Compromisso {
 
 	public int[] getHoraFinal() {
 		return horaFinal;
-	}
+	}*/
 
 }
