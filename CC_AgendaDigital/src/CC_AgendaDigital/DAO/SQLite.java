@@ -25,6 +25,12 @@ public class SQLite {
 		createTables();
 	}
 
+	/**
+	 * Test
+	 * 
+	 * @param pessoa
+	 */
+	
 	public static void insertPessoa(Pessoa pessoa) {
 		try {
 			stm = conn.createStatement();

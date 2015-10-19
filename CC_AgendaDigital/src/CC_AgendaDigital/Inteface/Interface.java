@@ -37,6 +37,10 @@ public class Interface implements IButtonController {
 
 	public static void main(String[] args) {
 
+		// Region - getters
+		System.out.println("");
+				// EndRegion
+		
 		try {
 			s = new File("").getCanonicalPath();
 			new SQLite(s + "\\AgendaDigitalDb.sqlite");
@@ -226,6 +230,7 @@ public class Interface implements IButtonController {
 	}
 	
 	public void updateJListPessoas() {
+		
 		ListaPessoas = SQLite.getPessoas();
 		model.addElement(ListaPessoas.get(ListaPessoas.size() - 1));
 		frame.revalidate();

@@ -1,0 +1,11 @@
+package POO_AgendaDigital.Core;
+
+import java.util.ArrayList;
+
+public class Pessoa {
+	private int PessoaId;
+	private String Nome;
+	private int Idade;
+	private String DataNascimento;
+	private ArrayList<Compromisso> Compromissos;
+}

@@ -1,0 +1,68 @@
+package POO_AgendaDigital.Core;
+
+import java.util.ArrayList;
+
+public class Pessoa {
+	private final int PessoaId;
+	private String Nome;
+	private int Idade;
+	private String DataNascimento;
+	private ArrayList<Compromisso> Compromissos;
+
+	public Pessoa(int PessoaId, String Nome, int Idade, String DataNascimento) {
+		this.PessoaId = PessoaId;
+		this.Nome = Nome;
+		this.Idade = Idade;
+		this.DataNascimento = DataNascimento;
+		Compromissos = new ArrayList<Compromisso>();
+		
+	}
+
+	// Region - GETTERS 
+	
+	public int getPessoaId() {
+		return PessoaId;
+	}
+
+	public String getNome() {
+		return Nome;
+	}
+ 
+	
+
+	public int getIdade() {
+		return Idade;
+	}
+
+	
+
+	public String getDataNascimento() {
+		return DataNascimento;
+	}
+
+	public ArrayList<Compromisso> getCompromissos() {
+		return Compromissos;
+	}
+
+	// EndRegion
+	
+	//Region - SETTERS
+	
+	public void setNome(String Nome) {
+		this.Nome = Nome;
+	}
+	
+	public void setCompromisso(Compromisso Compromisso) {
+		Compromissos.add(Compromisso);
+	}
+	
+	public void setDataNascimento(String DataNascimento) {
+		this.DataNascimento = DataNascimento;
+	}
+	
+	public void setIdade(int Idade) {
+		this.Idade = Idade;
+	}
+	
+	// EndRegion
+}
