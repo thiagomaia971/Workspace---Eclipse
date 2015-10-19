@@ -8,7 +8,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 
-import CC_AgendaDigital.Core.Familia;
+import CC_AgendaDigital.Core.Pessoa;
 import CC_AgendaDigital.DAO.SQLite;
 
 import javax.swing.JLabel;
@@ -25,7 +25,6 @@ public class MainProgram {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		db = new SQLite("Database/AgendaDigitalDb.sqlite");
-		 db.insertFamilia(new Familia("Maia"));
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -57,20 +56,20 @@ public class MainProgram {
 	}
 
 	private void criarListFamilia() {
-		JLabel lblNewLabel = new JLabel("Familias");
+		JLabel lblNewLabel = new JLabel("Pessoas");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 0, 195, 38);
 		frame.getContentPane().add(lblNewLabel);
 
-		ArrayList<Familia> familias = db.getFamilias();
-		DefaultListModel<Familia> model = new DefaultListModel<Familia>();
-		JList<Familia> JListFamilias = new JList<Familia>(model);
-		JListFamilias.setBounds(0, 41, 195, 648);
+		ArrayList<Pessoa> pessoas = db.getPessoas();
+		DefaultListModel<Pessoa> model = new DefaultListModel<Pessoa>();
+		JList<Pessoa> JListPessoas = new JList<Pessoa>(model);
+		JListPessoas.setBounds(0, 41, 195, 648);
 
-		for (int i = 0; i < familias.size(); i++) {
-			model.addElement(familias.get(i));
+		for (int i = 0; i < pessoas.size(); i++) {
+			model.addElement(pessoas.get(i));
 		}
-		frame.getContentPane().add(JListFamilias);
+		frame.getContentPane().add(JListPessoas);
 	}
 }

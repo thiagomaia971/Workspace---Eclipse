@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Pessoa{
 
 	private final int PessoaId;
-	private final int FamiliaId;
 	private String Nome;
 	private int Idade;
 	private String DataNascimento;
@@ -13,7 +12,6 @@ public class Pessoa{
 
 	public Pessoa(String Nome, String DataNascimento, int Idade) {
 		this.PessoaId = 0;
-		this.FamiliaId = 0;
 		this.Nome = Nome;
 		this.Idade = Idade;
 		this.DataNascimento = DataNascimento;
@@ -22,7 +20,6 @@ public class Pessoa{
 
 	public Pessoa(int PessoaId, int FamiliaId, String Nome, String DataNascimento, int Idade) {
 		this.PessoaId = PessoaId;
-		this.FamiliaId = FamiliaId;
 		this.Nome = Nome;
 		this.Idade = Idade;
 		this.DataNascimento = DataNascimento;
