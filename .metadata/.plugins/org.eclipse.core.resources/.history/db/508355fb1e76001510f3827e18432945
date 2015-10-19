@@ -1,0 +1,16 @@
+package CC_AgendaDigital.Inteface;
+
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+public class ButtonController {
+	public static JPanel newPessoa(){
+		JPanel newPessoaPanel;
+		
+		return newPessoaPanel;
+	}
+}

@@ -1,0 +1,11 @@
+package CC_AgendaDigital.Inteface;
+
+import javax.swing.JPanel;
+
+public class ButtonController {
+	public static JPanel newPessoa(){
+		JPanel newPessoaPanel = null;
+		
+		return newPessoaPanel;
+	}
+}

@@ -1,0 +1,18 @@
+package CC_AgendaDigital.Inteface;
+
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+public class ButtonController {
+	public static JLabel newPessoa(JFrame frame){
+		JLabel lblCadastrar = new JLabel("Cadastrar");
+		lblCadastrar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrar.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblCadastrar.setBounds(205, 15, 1125, 103);
+		return lblCadastrar;
+		//frame.getContentPane().add(lblCadastrar);
+	}
+}
