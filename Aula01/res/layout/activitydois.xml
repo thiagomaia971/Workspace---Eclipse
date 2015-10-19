@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+	
+   <TextView
+       android:id="@+id/nome"
+       android:text="Nome: "
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="17sp"
+       />
+   
+   <TextView
+       android:id="@+id/textNome"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="40dp"
+       />
+   
+   <TextView
+       android:id="@+id/curso"
+       android:text="Curso: "
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/nome"
+       android:textSize="17sp"
+       
+       />
+   
+   <TextView
+       android:id="@+id/textCurso"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/textNome"
+       android:layout_marginLeft="40dp"
+       
+       />
+   
+   <TextView
+       android:id="@+id/idade"
+       android:text="Idade: "
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/curso"
+       android:textSize="17sp"
+       
+       />
+   
+   <TextView
+       android:id="@+id/textIdade"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/textCurso"
+       android:layout_marginLeft="40dp"
+       
+       />
+   
+   <TextView
+       android:id="@+id/Numero"
+       android:text="Número: "
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/idade"
+       android:textSize="17sp"
+       
+       />
+   
+   <TextView
+       android:id="@+id/textNumero"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/textIdade"
+       android:layout_marginLeft="60dp"
+       
+       />
+   
+   <Button
+        android:id="@+id/ligar"
+        android:text="" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCurso"
+        android:layout_marginTop="280dp"
+        android:background="@drawable/ligar1"
+        
+        />
+    
+    <Button
+        android:id="@+id/salvar"
+        android:text="@string/salvar" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCurso"
+        android:layout_alignBaseline="@+id/ligar"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="90dp"
+        
+        />
+    
+    <Button
+        android:id="@+id/editar"
+        android:text="EDITAR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/salvar"
+        android:layout_marginLeft="180dp"
+        />
+    
+    <Button
+        android:id="@+id/camera"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ligar"
+        android:background="@drawable/camera"
+        />
+
+
+   
+</RelativeLayout>

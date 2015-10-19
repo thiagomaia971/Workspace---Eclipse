@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textNome"
+        android:text="@string/nome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17sp" 
+        />
+    
+    
+    <EditText
+        android:id="@+id/editNome" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textNome"
+        
+        />
+    
+    <TextView
+        android:id="@+id/textCurso"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editNome"
+        android:text="@string/curso"
+        android:textSize="17sp"
+        />
+    
+    <EditText
+        android:id="@+id/editCurso"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textCurso"
+        />
+    
+    <TextView
+        android:id="@+id/textIdade"
+        android:text="@string/idade"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCurso"
+        android:textSize="17sp"
+        />
+    
+    <EditText
+        android:id="@+id/editIdade"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textIdade"
+        />
+    
+    <TextView
+        android:id="@+id/textNumero"
+        android:text="Número: "
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editIdade"
+        android:textSize="17sp"
+        />
+    
+    <EditText
+        android:id="@+id/editNumero"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textNumero"
+        />
+    
+    
+    <Button
+        android:id="@+id/salvar"
+        android:text="@string/salvar" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCurso"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="90dp"
+        
+        />
+    
+    <Button
+        android:id="@+id/next"
+        android:text="@string/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/salvar"
+        android:layout_marginLeft="180dp"
+        />
+        
+
+</RelativeLayout>
