@@ -230,7 +230,6 @@ public class Interface implements IButtonController {
 	}
 	
 	public void updateJListPessoas() {
-		
 		ListaPessoas = SQLite.getPessoas();
 		model.addElement(ListaPessoas.get(ListaPessoas.size() - 1));
 		frame.revalidate();
