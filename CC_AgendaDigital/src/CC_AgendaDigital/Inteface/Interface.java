@@ -18,6 +18,8 @@ import CC_AgendaDigital.Core.Pessoa;
 import CC_AgendaDigital.DAO.SQLite;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -30,10 +32,12 @@ public class Interface implements IButtonController {
 	JList<Pessoa> JListPessoas;
 	JPanel panelNewPessoa;
 	DefaultListModel<Pessoa> model;
+	static String s;
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		new SQLite("Database/AgendaDigitalDb.sqlite");
+	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
 
+		s = new File("").getCanonicalPath();
+		new SQLite(s + "\\AgendaDigitalDb.sqlite");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,20 +51,15 @@ public class Interface implements IButtonController {
 
 	}
 
-	/**
-	 * Create the application.
-	 * 
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public Interface() {
+	public Interface() throws IOException {
 		initialize();
 
 		createOrUpdateListPessoas();
 		// panelNewPessoa = ButtonController.newPessoa();
 	}
 
-	private void initialize() {
+	private void initialize() throws IOException {
+
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension scrnsize = toolkit.getScreenSize();
 
@@ -96,7 +95,12 @@ public class Interface implements IButtonController {
 
 		btnNovaPessoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				newPessoa();
+				try {
+					newPessoa();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				frame.revalidate();
 				frame.repaint();
 			}
@@ -104,7 +108,7 @@ public class Interface implements IButtonController {
 
 	}
 
-	public void newPessoa() {
+	public void newPessoa() throws IOException {
 		JPanel panel = new JPanel();
 		panel.setToolTipText("");
 		panel.setBackground(Color.LIGHT_GRAY);
@@ -113,11 +117,12 @@ public class Interface implements IButtonController {
 		panel.setLayout(null);
 		frame.getContentPane().add(panel);
 
-		JLabel lblNewLabel_1 = new JLabel("Cadastrar");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 32));
+		JLabel lblNewLabel_1 = new JLabel(s);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(10, 11, 1116, 39);
 		panel.add(lblNewLabel_1);
+		// JLabel lblNewLabel_1 = new JLabel("Cadastrar");
 
 		JLabel lblNome = new JLabel("Nome: ");
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -166,11 +171,12 @@ public class Interface implements IButtonController {
 				SQLite.insertPessoa(new Pessoa(txtDigiteONome.getText(), textField.getText(),
 						Integer.parseInt(txtDigiteAIdade.getText())));
 				ListaPessoas = SQLite.getPessoas();
-				//JListPessoas = new JList<Pessoa>(model);
-				/*for (int i = 0; i < ListaPessoas.size(); i++) {
-					model.addElement(ListaPessoas.get(i));
-				}*/
-				model.addElement(ListaPessoas.get(ListaPessoas.size()-1));
+				// JListPessoas = new JList<Pessoa>(model);
+				/*
+				 * for (int i = 0; i < ListaPessoas.size(); i++) {
+				 * model.addElement(ListaPessoas.get(i)); }
+				 */
+				model.addElement(ListaPessoas.get(ListaPessoas.size() - 1));
 				frame.getContentPane().add(JListPessoas);
 				frame.revalidate();
 				frame.repaint();

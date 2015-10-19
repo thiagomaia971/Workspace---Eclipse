@@ -11,5 +11,6 @@ org.eclipse.debug.ui.outColor=235,235,235
 org.eclipse.debug.ui.save_dirty_editors_before_launch=always
 org.eclipse.debug.ui.switch_perspective_on_suspend=always
 overriddenByCSS=,org.eclipse.debug.ui.MemoryHistoryKnownColor,org.eclipse.debug.ui.MemoryHistoryUnknownColor,org.eclipse.debug.ui.PREF_CHANGED_VALUE_BACKGROUND,org.eclipse.debug.ui.changedDebugElement,org.eclipse.debug.ui.consoleBackground,org.eclipse.debug.ui.errorColor,org.eclipse.debug.ui.inColor,org.eclipse.debug.ui.outColor,
+pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.VariableView"/>\r\n</VariablesViewMemento>
 preferredDetailPanes=DefaultDetailPane\:DefaultDetailPane|
 preferredTargets=default\:default|
