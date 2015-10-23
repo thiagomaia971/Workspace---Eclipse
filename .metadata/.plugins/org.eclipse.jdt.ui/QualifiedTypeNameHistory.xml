@@ -11,10 +11,12 @@
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="CC_AgendaDigital.DAO.SQLite"/>
 <fullyQualifiedTypeName name="CC_AgendaDigital.Core.Pessoa"/>
-<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="POO_AgendaDigital.Core.Compromisso"/>
-<fullyQualifiedTypeName name="POO_AgendaDigital.Infraestrutura.SQLite"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
+<fullyQualifiedTypeName name="POO_AgendaDigital.Infraestrutura.SQLite"/>
+<fullyQualifiedTypeName name="POO_AgendaDigital.Core.Pessoa"/>
+<fullyQualifiedTypeName name="java.awt.Container"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 </qualifiedTypeNameHistroy>

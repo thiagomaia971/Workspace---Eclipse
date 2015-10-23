@@ -33,6 +33,7 @@ public class ToolbarLeft extends JPanel {
 	private JButton btnEditar;
 	private JList jListPessoas;
 	private JTextField txtTes;
+	public DefaultListModel<Pessoa>  model;
 	
 	/**
 	 * Create the panel.
@@ -59,7 +60,7 @@ public class ToolbarLeft extends JPanel {
 		
 		//Region JList
 		
-		DefaultListModel<Pessoa>  model = new DefaultListModel<Pessoa>(); //Aqui vai receber a list pelo SQL
+		 model = new DefaultListModel<Pessoa>(); //Aqui vai receber a list pelo SQL
 		for (int i = 0; i < SQLite.qtdePessoasRegistradas(); i++) {
 			model.add(i, SQLite.getPessoaByIndex(i));
 		}
