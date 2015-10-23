@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="java.awt.Dimension"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
-<fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
 <fullyQualifiedTypeName name="javax.swing.JList"/>
 <fullyQualifiedTypeName name="javax.swing.JPanel"/>
@@ -15,4 +14,7 @@
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="POO_AgendaDigital.Core.Compromisso"/>
+<fullyQualifiedTypeName name="POO_AgendaDigital.Infraestrutura.SQLite"/>
+<fullyQualifiedTypeName name="java.awt.Font"/>
 </qualifiedTypeNameHistroy>

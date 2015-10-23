@@ -1,0 +1,10 @@
+package POO_AgendaDigital.Interface;
+
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class JTextFieldPlaceholder extends JTextField{
+
+	
+	
+}

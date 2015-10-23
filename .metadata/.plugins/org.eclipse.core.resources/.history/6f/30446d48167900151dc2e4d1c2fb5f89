@@ -1,0 +1,29 @@
+package POO_AgendaDigital.Core;
+
+import java.util.ArrayList;
+
+public class Compromisso {
+	private final int CompromissoId;
+	private final int PessoaId;
+	private String NomeCompromisso;
+	private ArrayList<Integer> Dias;
+	private String horaInicial;
+	private String horaFinal;
+
+	public Compromisso(int CompromissoId, int PessoaId, String NomeCompromisso, String horaInicial, String horaFinal,
+			int... dias) {
+		this.CompromissoId = CompromissoId;
+		this.PessoaId = PessoaId;
+		this.NomeCompromisso = NomeCompromisso;
+		this.Dias = new ArrayList<Integer>();
+		for (int i : dias) {
+			Dias.add(i);
+		}
+		this.horaInicial = horaInicial;
+		this.horaFinal = horaFinal;
+
+	}
+
+	
+	
+}

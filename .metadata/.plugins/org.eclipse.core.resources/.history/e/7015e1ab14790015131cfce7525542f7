@@ -1,0 +1,59 @@
+package POO_AgendaDigital.Infraestrutura;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+public class SQLite {
+	private static Connection conn;
+	private static Statement stm;
+	
+	public SQLite(String arquivo) {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conn = DriverManager.getConnection("jdbc:sqlite:" + arquivo);
+			stm = conn.createStatement();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
+		createTables();
+	}
+	
+	/**
+	 * Recebe como parametro uma Pessoa e insere 
+	 * 
+	 * @param pessoa
+	 */
+	public static void insertPessoa(Pessoa pessoa) {
+		try {
+			stm = conn.createStatement();
+			stm.executeUpdate("INSERT INTO Pessoa (Nome, DataNasc, Idade) " + "VALUES ('" + pessoa.getNome() + "', '"
+					+ pessoa.getDataNascimento() + "', " + pessoa.getIdade() + ")");
+			// stm.cancel();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void createTables() {
+		try {
+			stm = conn.createStatement();
+			
+			//Pessoa
+			stm.executeUpdate("CREATE TABLE IF NOT EXISTS Pessoa (PessoaId INTEGER PRIMARY KEY NOT NULL"
+					+ ", Nome VARCHAR(30) NOT NULL, DataNasc VARCHAR(10) NOT NULL, Idade INTEGER NOT NULL)");
+
+			//Compromisso
+			stm.executeUpdate("CREATE TABLE IF NOT EXISTS [Compromisso] (CompromissoId INTEGER PRIMARY KEY"
+					+ ", PessoaId INTEGER, NomeCompromisso VARCHAR(20) NOT NULL, Dias INTEGER NOT NULL"
+					+ ", HoraInicial VARCHAR(5) NOT NULL, HoraFinal VARCHAR(5) NOT NULL" + ", FOREIGN KEY ([PessoaId]) "
+					+ "  REFERENCES [Pessoa] ([PessoaId]))");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

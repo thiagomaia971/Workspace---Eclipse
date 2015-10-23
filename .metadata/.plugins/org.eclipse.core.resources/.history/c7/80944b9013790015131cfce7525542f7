@@ -1,0 +1,21 @@
+package POO_AgendaDigital.Interface;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.FocusManager;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class JTextFieldPlaceholder extends JTextField{
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		if(this.getText().isEmpty() && !((FocusManager.getCurrentKeyboardFocusManager().getFocusOwner()) == this)){
+			Graphics2D g2 = (Graphics2D) g.create();
+		}
+	}
+	
+}

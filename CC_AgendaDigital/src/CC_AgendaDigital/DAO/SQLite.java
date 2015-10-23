@@ -18,7 +18,7 @@ public class SQLite {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conn = DriverManager.getConnection("jdbc:sqlite:" + arquivo);
-			stm = conn.createStatement();
+			//stm = conn.createStatement();
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -30,7 +30,6 @@ public class SQLite {
 	 * 
 	 * @param pessoa
 	 */
-	
 	public static void insertPessoa(Pessoa pessoa) {
 		try {
 			stm = conn.createStatement();

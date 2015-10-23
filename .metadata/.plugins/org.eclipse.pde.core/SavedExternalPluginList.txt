@@ -1,7 +1,8 @@
-# List of external plug-in models previously loaded. Timestamp: 1445233545453
+# List of external plug-in models previously loaded. Timestamp: 1445556693976
 file:/C:/Users/thiag/Documents/IDE's/Eclipse Mars 64x/plugins/ch.qos.logback.classic_1.0.7.v20121108-1250.jar
 file:/C:/Users/thiag/Documents/IDE's/Eclipse Mars 64x/plugins/ch.qos.logback.core_1.0.7.v20121108-1250.jar
 file:/C:/Users/thiag/Documents/IDE's/Eclipse Mars 64x/plugins/ch.qos.logback.slf4j_1.0.7.v201505121915.jar
+file:/C:/Users/thiag/Documents/IDE's/Eclipse Mars 64x/plugins/com.cb.eclipse.folding_1.0.6.jar
 file:/C:/Users/thiag/Documents/IDE's/Eclipse Mars 64x/plugins/com.github.eclipsecolortheme_1.0.0.201410260308.jar
 file:/C:/Users/thiag/Documents/IDE's/Eclipse Mars 64x/plugins/com.google.gson_2.2.4.v201311231704.jar
 file:/C:/Users/thiag/Documents/IDE's/Eclipse Mars 64x/plugins/com.google.guava_15.0.0.v201403281430.jar

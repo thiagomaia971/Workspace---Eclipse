@@ -97,4 +97,8 @@ public class Pessoa {
 	}
 
 	// EndRegion
+	
+	public String toString(){
+		return "•" + Nome;
+	}
 }

@@ -1,0 +1,14 @@
+package POO_AgendaDigital.Core;
+
+import java.util.ArrayList;
+
+public class Compromisso {
+	private final int PessoaId;
+	private final int CompromissoId;
+	private String NomeCompromisso;
+	private ArrayList<Integer> Dias;
+	private String horaInicial;
+	private String horaFinal;
+	
+	
+}

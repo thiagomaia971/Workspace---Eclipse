@@ -1,0 +1,34 @@
+package POO_AgendaDigital.Interface;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
+
+public class PanelCreatePessoa extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelCreatePessoa() {
+		setLayout(null);
+		
+		JLabel lblCadastrar = new JLabel("Cadastrar");
+		lblCadastrar.setFont(new Font("Sitka Subheading", Font.BOLD, 26));
+		lblCadastrar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrar.setBounds(0, 11, 802, 43);
+		this.add(lblCadastrar);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Cadastrar", TitledBorder.CENTER, TitledBorder.TOP, null, Color.BLACK));
+		panel.setBounds(156, 142, 423, 259);
+		this.add(panel);
+		
+		this.setVisible(true);
+
+	}
+}

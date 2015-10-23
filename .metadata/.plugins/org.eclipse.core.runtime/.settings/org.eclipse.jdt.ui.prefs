@@ -13,6 +13,7 @@ org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" 
 org.eclipse.jdt.ui.text.templates_migrated=true
 org.eclipse.jface.textfont=1|Courier New|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Courier New;
 proposalOrderMigrated=true
+sourceHoverBackgroundColor=41,41,41
 spelling_locale_initialized=true
 tabWidthPropagated=true
 useAnnotationsPrefPage=true

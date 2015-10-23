@@ -24,17 +24,25 @@
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 		<item value="true" key="RunnableJar.export.ipwarning"/>
 	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item value="528" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="696" key="DIALOG_HEIGHT"/>
+		<item value="720" key="DIALOG_X_ORIGIN"/>
+		<item value="11" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="RefactoringWizard.preview">
 		<item value="600" key="width"/>
 		<item value="400" key="height"/>
 	</section>
 	<section name="FatJarPackageWizard">
 		<item value="C:\Users\thiag\Documents\Workspace---Eclipse" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="Interface - CC_AgendaDigital" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
-		<item value="C:\Users\thiag\Desktop\AgendaDigital.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="Launch - POO_AgendaDigital" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="C:\Users\thiag\Desktop\AgendaDigital\Agenda Digital.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="2" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="C:\Users\thiag\Desktop\AgendaDigital\Agenda Digital.jar"/>
 			<item value="C:\Users\thiag\Desktop\AgendaDigital.jar"/>
 			<item value="C:\Users\thiag\Desktop\a.jar"/>
 		</list>
@@ -42,6 +50,12 @@
 			<item value="C:\Users\thiag\Documents\Workspace---Eclipse.xml"/>
 			<item value=".xml"/>
 		</list>
+	</section>
+	<section name="SourceActionDialog.methods">
+		<item value="false" key="SynchronizedModifier"/>
+		<item value="false" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
+		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="RenameInformationPopup">
 	</section>
@@ -84,6 +98,10 @@
 			<item value="C:\Users\thiag\Desktop\test.jar"/>
 			<item value="C:\Users\thiag\Desktop\j.jar"/>
 		</list>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item value="false" key="SortOrdering"/>
+		<item value="false" key="RemoveFinal"/>
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>

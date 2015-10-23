@@ -3,7 +3,13 @@
 	<section name="org.eclipse.wb.internal.swing.model.property.editor.font.FontDialog">
 		<item value="431" key="x"/>
 		<item value="504" key="width"/>
-		<item value="111" key="y"/>
+		<item value="-762" key="y"/>
 		<item value="506" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.border.BorderDialog">
+		<item value="251" key="x"/>
+		<item value="482" key="width"/>
+		<item value="-859" key="y"/>
+		<item value="381" key="height"/>
 	</section>
 </section>
