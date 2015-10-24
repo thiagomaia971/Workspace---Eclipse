@@ -50,6 +50,7 @@ public class MainFrame extends JFrame {
 		tbLeft = new ToolbarLeft();
 		tbTop = new ToolbarTop();
 		pnPessoa = new PanelCreatePessoa(tbLeft);
+		pnPessoa.setVisible(tbLeft.getVisiblePanel);
 		
 		tbLeft.setBounds(0, 0, 250, 595);
 		tbTop.setBounds(250, 0, 802, 80);

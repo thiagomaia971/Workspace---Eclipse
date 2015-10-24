@@ -75,7 +75,6 @@ public class SQLite {
 	public static Pessoa getPessoaByIndex(int Index) {
 		int auxIndex = 0;
 		ResultSet rs;
-
 		try {
 			stm = conn.createStatement();
 			rs = stm.executeQuery("SELECT * FROM Pessoa");
