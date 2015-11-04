@@ -1,0 +1,30 @@
+package POO_AgendaDigital.Interface;
+
+import java.awt.Font;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class PanelEditPessoa extends JPanel {
+	
+	private JLabel lblCadastrar;
+	private JLabel lblNome;
+	private JLabel lblIdade;
+	private JLabel lblDataDeNascimento;
+	
+	private JTextField inputNome;
+	private JTextField inputIdade;
+	private JTextField inputDataNascimento;
+
+
+	public PanelEditPessoa() {
+		
+		
+		
+		
+		
+	}
+
+}

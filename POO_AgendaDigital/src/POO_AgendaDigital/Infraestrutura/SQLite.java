@@ -69,6 +69,7 @@ public class SQLite {
 
 	/**
 	 * Método para receber uma Pessoa apartir de um Index.
+	 * 
 	 * @param Index
 	 * @return Pessoa
 	 */
@@ -116,7 +117,22 @@ public class SQLite {
 	}
 
 	/**
+	 * 
+	 */
+
+	public static void updatePessoa(int Id, Pessoa Pessoa) {
+		try {
+			stm = conn.createStatement();
+			stm.executeUpdate("UPDATE [Pessoa] SET Nome = '" + Pessoa.getNome() + "', Idade = " + Pessoa.getIdade()
+					+ ", DataNasc = '" + Pessoa.getDataNascimento() + "' WHERE Pessoa.PessoaId = " + Id + "");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	/**
 	 * Método para receber o número de pessoas Cadastradas.
+	 * 
 	 * @return int
 	 */
 	public static int qtdePessoasRegistradas() {

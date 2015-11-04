@@ -2,12 +2,14 @@ package POO_AgendaDigital.Interface;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
+import POO_AgendaDigital.Core.Negocio;
 import POO_AgendaDigital.Core.Pessoa;
 import POO_AgendaDigital.Infraestrutura.SQLite;
 
@@ -26,21 +28,23 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class PanelCreatePessoa extends JPanel {
 
-	JLabel lblCadastrar;
-	JLabel lblNome;
-	JLabel lblIdade;
-	JLabel lblDataDeNascimento;
+	private JLabel lblCadastrar;
+	private JLabel lblNome;
+	private JLabel lblIdade;
+	private JLabel lblDataDeNascimento;
 
 	private JTextField inputNome;
 	private JTextField inputIdade;
 	private JTextField inputDataNascimento;
 	
-	public DefaultListModel<Pessoa>  model;
+	private JButton btnNovo;
+	
+	public DefaultListModel<Pessoa> model;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelCreatePessoa(ToolbarLeft tbLeft) {
+	public PanelCreatePessoa() {
 		setLayout(null);
 
 		lblCadastrar = new JLabel("Cadastrar");
@@ -82,25 +86,43 @@ public class PanelCreatePessoa extends JPanel {
 		this.add(inputNome);
 		this.add(inputIdade);
 		this.add(inputDataNascimento);
-		model = tbLeft.model;
 		
-		JButton btnNovo = new JButton("Novo");
+		btnNovo = new JButton("Novo");
+		
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				SQLite.insertPessoa(new Pessoa(0, inputNome.getText(), Integer.parseInt(inputIdade.getText()),
-						inputDataNascimento.getText()));
-				model.removeAllElements();
-				for (int i = 0; i < SQLite.qtdePessoasRegistradas(); i++) {
-					model.add(i, SQLite.getPessoaByIndex(i));
+				String nomeStr = inputNome.getText();
+				
+				if(nomeStr.length() > 0){
+					if(Negocio.isString(nomeStr)){
+						
+						SQLite.insertPessoa(new Pessoa(0, inputNome.getText(), Integer.parseInt(inputIdade.getText()),
+								inputDataNascimento.getText()));
+						model.removeAllElements();
+						for (int i = 0; i < SQLite.qtdePessoasRegistradas(); i++) {
+							model.add(i, SQLite.getPessoaByIndex(i));
+						}
+						
+					}else{
+						JOptionPane.showMessageDialog(null, "Não é possível ter número no seu Nome");
+					}
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "Informe o seu Nome");
 				}
 			}
 		});
 
 		btnNovo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNovo.setBounds(562, 540, 206, 44);
-		add(btnNovo);
+		btnNovo.setBounds(604, 493, 175, 44);
+		this.add(btnNovo);
 
 		this.setVisible(true);
 
+		
+	}
+	
+	public void setModel(DefaultListModel<Pessoa> model){
+		this.model = model;
 	}
 }

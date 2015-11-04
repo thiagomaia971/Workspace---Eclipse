@@ -1,0 +1,5 @@
+package POO_AgendaDigital.Interface.Listeners;
+
+public interface ILeftToolbarListener {
+	public void buttomEventCurrent(String e);
+}

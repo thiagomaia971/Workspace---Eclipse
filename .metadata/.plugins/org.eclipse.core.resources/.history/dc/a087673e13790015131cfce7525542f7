@@ -1,7 +1,0 @@
-package POO_AgendaDigital.Interface;
-
-import javax.swing.JTextField;
-
-public class JTextFieldPlaceholder extends JTextField{
-
-}

@@ -1,7 +1,0 @@
-package POO_AgendaDigital.Core;
-
-public class Compromisso {
-	private final int PessoaId;
-	private final int CompromissoId;
-	
-}

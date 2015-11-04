@@ -1,0 +1,14 @@
+package POO_AgendaDigital.Interface;
+
+import javax.swing.JPanel;
+
+public class PanelEditPessoa extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelEditPessoa() {
+
+	}
+
+}

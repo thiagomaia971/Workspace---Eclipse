@@ -1,0 +1,15 @@
+package POO_AgendaDigital.Core;
+
+public class Negocio {
+	
+	
+	public static boolean isString(String str){
+		boolean isString = true;
+		
+		for (char charStr : str) {
+			
+		}
+		
+		return isString;
+	}
+}

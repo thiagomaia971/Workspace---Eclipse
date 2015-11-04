@@ -1,0 +1,17 @@
+package POO_AgendaDigital.Core;
+
+public class Negocio {
+	
+	
+	public static boolean isString(String str){
+		boolean isString = false;
+		
+		try{
+			int s = Integer.parseInt(str);
+		}catch(NumberFormatException nfe){
+			isString = true;
+		}
+		
+		return isString;
+	}
+}

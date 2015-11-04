@@ -6,6 +6,7 @@ import javax.swing.event.MouseInputListener;
 
 import POO_AgendaDigital.Core.Pessoa;
 import POO_AgendaDigital.Infraestrutura.SQLite;
+import POO_AgendaDigital.Interface.Listeners.ILeftToolbarListener;
 import POO_AgendaDigital.Interface.Listeners.IMouseInputListener;
 
 import javax.swing.DefaultListModel;
@@ -34,6 +35,7 @@ public class ToolbarLeft extends JPanel implements ActionListener{
 	private JList<Pessoa> jListPessoas;
 	private JTextField txtTes;
 	public DefaultListModel<Pessoa> model;
+	private ILeftToolbarListener tbListener;
 	
 	public boolean getVisiblePanel;
 
@@ -138,14 +140,21 @@ public class ToolbarLeft extends JPanel implements ActionListener{
 		setVisible(true);
 
 	}
+	
+	public void setLeftToolbarListener(ILeftToolbarListener tbListener){
+		this.tbListener = tbListener;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		if (e.getSource() == btnNovo) {
-			System.out.println("novo");
+		JButton clicked = (JButton) e.getSource();
+		
+		if (clicked == btnNovo) {
+			tbListener.buttomEventCurrent("Novo");
+			//System.out.println("novo");
 		} else if (e.getSource() == btnEditar) {
-			System.out.println("editar " + jListPessoas.getSelectedValue());
+			tbListener.buttomEventCurrent("Editar", (Pessoa) jListPessoas.getSelectedValue());
+			//System.out.println("editar " + jListPessoas.getSelectedValue());
 		}
 	}
 
